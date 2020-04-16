@@ -1,4 +1,4 @@
-function out = matchedFilter(image,plot)
+function im_thre = matchedFilter(image,plot)
     %% 预处理
     % 提取绿色通道
     [~, g, ~] = imsplit(image);
@@ -42,8 +42,14 @@ function out = matchedFilter(image,plot)
        out = max(out,res);
     end
     out = out/max(out(:));
-    out(im_mask == 0) = 0;
-if plot == true
-    figure,imshow(mid);
-end
+    level = graythresh(out);
+    im_thre = imbinarize(out,level) & im_mask;
+    if plot == true
+        figure();
+        subplot(1,5,1);imshow(g,[]);title('绿色通道');
+        subplot(1,5,2);imshow(bw,[]);title('CLAHE增强');
+        subplot(1,5,3);imshow(mid,[]);title('形态学处理与顶帽变换');
+        subplot(1,5,4);imshow(out,[]);title('滤波结果');
+        subplot(1,5,5);imshow(im_thre,[]);title('二值化处理');
+    end
 end

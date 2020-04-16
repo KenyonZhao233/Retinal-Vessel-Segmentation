@@ -34,7 +34,12 @@ im_thin_vess = MatchFilterWithGaussDerivative(im_enh, 1, 4, 12, im_mask, 2.3, 30
 % 合并处理一处理二结果
 [im_final] = combine_thin_vessel(im_thin_vess,im_sel);
 if plot == true
-    figure,imshow(im_enh);
+    figure();
+    subplot(1,5,1);imshow(im_green,[]);title('绿色通道');
+    subplot(1,5,2);imshow(im_enh,[]);title('CLAHE增强');
+    subplot(1,5,3);imshow(im_top,[]);title('替换背景与顶帽变换');
+    subplot(1,5,4);imshow(im_thre,[]);title('OTSU 阈值处理');
+    subplot(1,5,5);imshow(im_final,[]);title('细节处理');
 end
 end
 

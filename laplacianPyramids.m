@@ -35,9 +35,13 @@ function S = laplacianPyramids(I,plot)
     [L2,L3,L4]=L_pyramid(I,a,m);
     [S2,S3,S4]=Conn_comp(L2,L3,L4,T,k);
     S=fusion(S2,S3,S4,mask,a);
-if plot == true
-    figure,imshow(S);
-end
+    if plot == true
+        figure();
+        subplot(2,2,1);imshow(I,[]);title('绿色通道');
+        subplot(2,2,2);imshow(L2,[]);title('滤波后');
+        subplot(2,2,3);imshow(S2,[]);title('联通分量处理后');
+        subplot(2,2,4);imshow(S,[]);title('细节处理后');
+    end
 end
 
 

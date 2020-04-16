@@ -67,7 +67,7 @@ set(handles.axesResult2, 'visible','off');
 set(handles.axesResult3, 'visible','off');
 set(handles.axesResult4, 'visible','off');
 set(handles.axesResult5, 'visible','off');
-addpath('others\princurv')
+addpath('others')
 
 % --- Outputs from this function are returned to the command line.
 function varargout = GUI_OutputFcn(hObject, eventdata, handles) 

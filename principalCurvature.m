@@ -41,6 +41,13 @@ segImage = vessels;
 % imshow(segImage);
 % title("Filtering out small segments");
 if plot == true
-    figure,imshow(segImage);
+        figure();        
+        subplot(2,3,2);imshow(inputImage(:,:,2),[]);title('绿色通道');
+        subplot(2,3,1);imshow(erodedmask,[]);title('掩模');
+        subplot(2,3,3);imshow(img3,[]);title('高斯滤波后');
+        subplot(2,3,4);imshow(maxprincvmsk,[]);title('主曲率');
+        subplot(2,3,5);imshow(vessels,[]);title('对比度增强');
+        subplot(2,3,6);imshow(vessels,[]);title('滤波细血管');
+end
 end
 
