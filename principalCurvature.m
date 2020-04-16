@@ -1,4 +1,4 @@
-function [segImage] = principalCurvature(inputImage)
+function [segImage] = principalCurvature(inputImage,plot)
 %Vessel Extraction of retinal fundus Image using principal curvature
 %inputImage : input retinal fundus image
 %output - segImage : Segmented binary image 
@@ -40,5 +40,7 @@ segImage = vessels;
 % figure;
 % imshow(segImage);
 % title("Filtering out small segments");
-
+if plot == true
+    figure,imshow(segImage);
+end
 

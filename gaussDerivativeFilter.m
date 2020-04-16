@@ -1,4 +1,4 @@
-function im_final = gaussDerivativeFilter(image)
+function im_final = gaussDerivativeFilter(image,plot)
 %视网膜血管提取函数
 %   血管提取主要分为四部分：预处理、粗血管提取、细血管提取、后处理；
 
@@ -33,5 +33,8 @@ im_thin_vess = MatchFilterWithGaussDerivative(im_enh, 1, 4, 12, im_mask, 2.3, 30
 %% 后处理
 % 合并处理一处理二结果
 [im_final] = combine_thin_vessel(im_thin_vess,im_sel);
+if plot == true
+    figure,imshow(im_enh);
+end
 end
 

@@ -1,4 +1,4 @@
-function out = matchedFilter(image)
+function out = matchedFilter(image,plot)
     %% 预处理
     % 提取绿色通道
     [~, g, ~] = imsplit(image);
@@ -43,4 +43,7 @@ function out = matchedFilter(image)
     end
     out = out/max(out(:));
     out(im_mask == 0) = 0;
+if plot == true
+    figure,imshow(mid);
+end
 end

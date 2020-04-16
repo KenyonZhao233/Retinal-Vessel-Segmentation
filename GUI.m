@@ -22,7 +22,7 @@ function varargout = GUI(varargin)
 
 % Edit the above text to modify the response to help GUI
 
-% Last Modified by GUIDE v2.5 19-Mar-2020 22:09:22
+% Last Modified by GUIDE v2.5 16-Apr-2020 22:01:16
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -62,8 +62,12 @@ guidata(hObject, handles);
 % uiwait(handles.figure1);
 
 set(handles.axesOriginal, 'visible','off');
-set(handles.axesResult, 'visible','off');
-addpath('others')
+set(handles.axesResult1, 'visible','off');
+set(handles.axesResult2, 'visible','off');
+set(handles.axesResult3, 'visible','off');
+set(handles.axesResult4, 'visible','off');
+set(handles.axesResult5, 'visible','off');
+addpath('others\princurv')
 
 % --- Outputs from this function are returned to the command line.
 function varargout = GUI_OutputFcn(hObject, eventdata, handles) 
@@ -81,22 +85,65 @@ function buttonOpenFile_Callback(hObject, eventdata, handles)
 % hObject    handle to buttonOpenFile (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-
 %% 0.∂¡»°Õº∆¨≤¢œ‘ æ
 [filename, pathname] = uigetfile( ...
 {  '*.ppm;*.jpg;*.tif;*.png;*.gif','All Image Files';...
    '*.*','All Files' },'mytitle',...
    'data\stare-images\im0001.ppm');
 im = imread([pathname, '\', filename]);
-
+handles.im = im;
+guidata(hObject,handles);
 axes(handles.axesOriginal);
 imshow(im,[]);
+title('original');
 method(im,handles);
 
 function method(im,handles)
-    cla(handles.axesResult);
-    %% Method
-    segIm = principalCurvature(im);
-    %% Result
-    axes(handles.axesResult);
-    imshow(segIm,[]);
+    cla(handles.axesResult1);
+    cla(handles.axesResult2);
+    cla(handles.axesResult3);
+    cla(handles.axesResult4);
+    cla(handles.axesResult5);
+    t2=clock;
+    axes(handles.axesResult1);imshow(matchedFilter(im,false));t1=t2;t2=clock;title(['matchedFilter:',num2str(etime(t2,t1)),'s']);
+    axes(handles.axesResult2);imshow(gaussDerivativeFilter(im,false));t1=t2;t2=clock;title(['gaussDerivativeFilter:',num2str(etime(t2,t1)),'s']);
+    axes(handles.axesResult3);imshow(laplacianPyramids(im,false));t1=t2;t2=clock;title(['laplacianPyramids:',num2str(etime(t2,t1)),'s']);
+    axes(handles.axesResult4);imshow(principalCurvature(im,false));t1=t2;t2=clock;title(['principalCurvature:',num2str(etime(t2,t1)),'s']);
+    axes(handles.axesResult5);
+
+
+% --- Executes on button press in pushbutton_matchedFilter.
+function pushbutton_matchedFilter_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton_matchedFilter (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+    im = handles.im;
+    matchedFilter(im,true);
+
+% --- Executes on button press in pushbutton3.
+function pushbutton3_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+    im = handles.im;
+    gaussDerivativeFilter(im,true);
+% --- Executes on button press in pushbutton_laplacianPyramids.
+function pushbutton_laplacianPyramids_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton_laplacianPyramids (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+    im = handles.im;
+    laplacianPyramids(im,true);
+% --- Executes on button press in pushbutton_principalCurvature.
+function pushbutton_principalCurvature_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton_principalCurvature (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+    im = handles.im;
+    principalCurvature(im,true);
+% --- Executes on button press in pushbutton_pcaEnhance.
+function pushbutton_pcaEnhance_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton_pcaEnhance (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+    im = handles.im;

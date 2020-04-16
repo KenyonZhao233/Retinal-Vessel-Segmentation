@@ -11,7 +11,7 @@
 
 
 
-function S = laplacianPyramids(I)
+function S = laplacianPyramids(I,plot)
 
     I=I(:,:,2); %green channel-> best contrast
     
@@ -35,7 +35,9 @@ function S = laplacianPyramids(I)
     [L2,L3,L4]=L_pyramid(I,a,m);
     [S2,S3,S4]=Conn_comp(L2,L3,L4,T,k);
     S=fusion(S2,S3,S4,mask,a);
-
+if plot == true
+    figure,imshow(S);
+end
 end
 
 
