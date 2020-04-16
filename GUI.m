@@ -63,7 +63,7 @@ guidata(hObject, handles);
 
 set(handles.axesOriginal, 'visible','off');
 set(handles.axesResult, 'visible','off');
-addpath('others\princurv')
+addpath('others')
 
 % --- Outputs from this function are returned to the command line.
 function varargout = GUI_OutputFcn(hObject, eventdata, handles) 
@@ -96,7 +96,7 @@ method(im,handles);
 function method(im,handles)
     cla(handles.axesResult);
     %% Method
-    segIm = vesselSegPC(im);
+    segIm = principalCurvature(im);
     %% Result
     axes(handles.axesResult);
     imshow(segIm,[]);
