@@ -109,7 +109,7 @@ function method(im,handles)
     axes(handles.axesResult2);imshow(gaussDerivativeFilter(im,false));t1=t2;t2=clock;title(['gaussDerivativeFilter:',num2str(etime(t2,t1)),'s']);
     axes(handles.axesResult3);imshow(laplacianPyramids(im,false));t1=t2;t2=clock;title(['laplacianPyramids:',num2str(etime(t2,t1)),'s']);
     axes(handles.axesResult4);imshow(principalCurvature(im,false));t1=t2;t2=clock;title(['principalCurvature:',num2str(etime(t2,t1)),'s']);
-    axes(handles.axesResult5);imshow(PCAEnhance(im,false));t1=t2;t2=clock;title(['pcaEhance:',num2str(etime(t2,t1)),'s']);
+    axes(handles.axesResult5);imshow(pcaEnhance(im,false));t1=t2;t2=clock;title(['pcaEhance:',num2str(etime(t2,t1)),'s']);
 
 
 % --- Executes on button press in pushbutton_matchedFilter.
@@ -147,4 +147,4 @@ function pushbutton_pcaEnhance_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
     im = handles.im;
-    PCAEnhance(im,true);
+    pcaEnhance(im,true);

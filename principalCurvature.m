@@ -5,7 +5,7 @@ function [segImage] = principalCurvature(inputImage,plot)
 %Reference : Achintha Iroshan ,University of Moratuwa
 
 %Generation of image mask
-mask = im2bw(inputImage,20/255);
+mask = im2bw(inputImage,40/255);
 se = strel('diamond',20);               %str. element of dimond type of size 20 (errosion)
 erodedmask = im2uint8(imerode(mask,se));    %erroded img
 % figure;

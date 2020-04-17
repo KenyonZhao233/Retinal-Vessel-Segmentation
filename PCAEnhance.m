@@ -1,4 +1,9 @@
 function [image_out]=pcaEnhance(I,plot)
+
+mask = im2bw(I,40/255);
+se = strel('diamond',20);               %str. element of dimond type of size 20 (errosion)
+erodedmask = im2uint8(imerode(mask,se));    %erroded img
+
 %基于PCA增强的算法
 %转换到lab空间
 lab = rgb2lab(im2double(I));
@@ -15,13 +20,14 @@ Z = imsubtract(JF, J);% 取灰度图像与平均滤波的差值
 level = graythresh(Z);%找到图片的一个合适的阈值
 BW = imbinarize(Z, level-0.008);%灰度图转为二进制
 BW2 = bwareaopen(BW, 50);%删除二值图像BW中面积小于50的对象
-image_out=BW2;
+image_out=BW2.*(erodedmask==255);
 if plot==true
     %CLAHE：JF
     %CLAHE滤波后差值：Z
     %结果：image_out
-    figure(1),
-    subplot(131),imshow(JF),title('CLAHE后均值滤波');
-    subplot(132),imshow(Z),title('CLAHE后均值滤波差值');
-    subplot(133),imshow(image_out),title('最终结果');
+    figure();
+    subplot(221),imshow(gray),title('PCA与归一化');
+    subplot(222),imshow(JF),title('CLAHE后均值滤波');
+    subplot(223),imshow(Z),title('CLAHE后均值滤波差值');
+    subplot(224),imshow(image_out),title('最终结果');
 end
