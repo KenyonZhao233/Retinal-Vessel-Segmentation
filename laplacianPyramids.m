@@ -27,7 +27,7 @@ function S = laplacianPyramids(I,plot)
     %% Parameters
     a=0.3;   % free paramter
     m=512;   %contrast colors
-    T=0.10;  % binarization threshold
+    T=0.15;  % binarization threshold
     k=0.056; %connected components
 
 
