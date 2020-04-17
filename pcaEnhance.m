@@ -4,30 +4,30 @@ mask = im2bw(I,40/255);
 se = strel('diamond',20);               %str. element of dimond type of size 20 (errosion)
 erodedmask = im2uint8(imerode(mask,se));    %erroded img
 
-%åŸºäºPCAå¢å¼ºçš„ç®—æ³•
-%è½¬æ¢åˆ°labç©ºé—´
+%»ùÓÚPCAÔöÇ¿µÄËã·¨?
+%×ª»»µ½lab¿Õ¼ä
 lab = rgb2lab(im2double(I));
 lab(:,:,2)=0;lab(:,:,3)=0;
-wlab = reshape(lab,[],3);%å‘é‡åŒ–
-[C,S] = pca(wlab); %ä¸»æˆåˆ†åˆ†æ
-S = reshape(S,size(lab));%Sä¸ºPCAåæ–°åæ ‡ä¸‹çš„çŸ©é˜µ
+wlab = reshape(lab,[],3);%ÏòÁ¿»¯
+[C,S] = pca(wlab); %Ö÷³É·Ö·ÖÎö
+S = reshape(S,size(lab));%SÎªPCAºóĞÂ×ø±êÏÂµÄ¾ØÕó
 S = S(:,:,1);
-gray = (S-min(S(:)))./(max(S(:))-min(S(:)));%å½’ä¸€åŒ–
-J = adapthisteq(gray,'numTiles',[8 8],'nBins',256); %CLAHEç›´æ–¹å›¾å‡è¡¡
-h = fspecial('average', [11 11]);%åˆ›å»ºå¹³å‡æ»¤æ³¢ç®—å­
-JF = imfilter(J, h);%æ»¤æ³¢å¤„ç†
-Z = imsubtract(JF, J);% å–ç°åº¦å›¾åƒä¸å¹³å‡æ»¤æ³¢çš„å·®å€¼
-level = graythresh(Z);%æ‰¾åˆ°å›¾ç‰‡çš„ä¸€ä¸ªåˆé€‚çš„é˜ˆå€¼
-BW = imbinarize(Z, level-0.008);%ç°åº¦å›¾è½¬ä¸ºäºŒè¿›åˆ¶
-BW2 = bwareaopen(BW, 50);%åˆ é™¤äºŒå€¼å›¾åƒBWä¸­é¢ç§¯å°äº50çš„å¯¹è±¡
+gray = (S-min(S(:)))./(max(S(:))-min(S(:)));%¹éÒ»»¯?
+J = adapthisteq(gray,'numTiles',[8 8],'nBins',256); %CLAHEÖ±·½Í¼¾ùºâ
+h = fspecial('average', [11 11]);%´´½¨Æ½¾ùÂË²¨Ëã×Ó
+JF = imfilter(J, h);%ÂË²¨´¦Àí
+Z = imsubtract(JF, J);% È¡»Ò¶ÈÍ¼ÏñÓëÆ½¾ùÂË²¨µÄ²îÖµ
+level = graythresh(Z);%ÕÒµ½Í¼Æ¬µÄÒ»¸öºÏÊÊµÄãĞÖµ??
+BW = imbinarize(Z, level-0.008);%»Ò¶ÈÍ¼×ªÎª¶ş½øÖÆ
+BW2 = bwareaopen(BW, 50);%É¾³ı¶şÖµÍ¼ÏñBWÖĞÃæ»ıĞ¡ÓÚ50µÄ¶ÔÏó?
 image_out=BW2.*(erodedmask==255);
 if plot==true
-    %CLAHEï¼šJF
-    %CLAHEæ»¤æ³¢åå·®å€¼ï¼šZ
-    %ç»“æœï¼šimage_out
+    %CLAHE£ºJF
+    %CLAHEÂË²¨ºó²îÖµ£ºZ
+    %½á¹û£ºimage_out
     figure();
-    subplot(221),imshow(gray),title('PCAä¸å½’ä¸€åŒ–');
-    subplot(222),imshow(JF),title('CLAHEåå‡å€¼æ»¤æ³¢');
-    subplot(223),imshow(Z),title('CLAHEåå‡å€¼æ»¤æ³¢å·®å€¼');
-    subplot(224),imshow(image_out),title('æœ€ç»ˆç»“æœ');
+    subplot(221),imshow(gray),title('PCAÓë¹éÒ»»¯');
+    subplot(222),imshow(JF),title('CLAHEºó¾ùÖµÂË²¨');
+    subplot(223),imshow(Z),title('CLAHEºó¾ùÖµÂË²¨²îÖµ');
+    subplot(224),imshow(image_out),title('×îÖÕ½á¹û');
 end
