@@ -30,6 +30,8 @@ maxprincvmsk = maxprincv.*(erodedmask/255);
 newprI = adapthisteq(maxprincvmsk,'numTiles',[8 8],'nBins',128);
 thresh = isodata(newprI);
 vessels = im2bw(newprI,thresh);
+% level = graythresh(newprI);%找到图片的一个合适的阈值??
+% vessels = imbinarize(newprI, level-0.008);%灰度图转为二进制
 % figure;
 % imshow(vessels);
 % title("Contrast enhancement.");
