@@ -1,4 +1,4 @@
-# Retinal Vessel Segmentation Zoo
+# Retinal Vessel Segmentation
   Matlab implementation of retinal blood vessel segmentation
 
 
