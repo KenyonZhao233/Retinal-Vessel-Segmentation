@@ -8,7 +8,7 @@
 
 http://cecas.clemson.edu/~ahoover/stare
 
-### 3.DiaRetDB1 V2.1 - Diabetic Retinopathy Database and Evaluation Protocol【with groud truth】
+### 3.DiaRetDB1 V2.1 - Diabetic Retinopathy Database and Evaluation Protocol
 
 https://www.it.lut.fi/project/imageret/diaretdb1_v2_1/#DOWNLOAD
 
@@ -24,7 +24,7 @@ https://projects.ics.forth.gr/cvrl/fire
 
  https://www5.cs.fau.de/research/data/fundus-images
 
-### 7.Messidor【with groud truth】
+### 7.Messidor
 
  http://www.adcis.net/en/third-party/messidor
 

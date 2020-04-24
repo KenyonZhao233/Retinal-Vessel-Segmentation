@@ -1,1 +1,6 @@
 *.ppm
+*.png
+*.jpg
+*.tif
+*.gif
+.ipynb_checkpoints

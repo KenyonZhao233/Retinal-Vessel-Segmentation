@@ -89,7 +89,10 @@ function buttonOpenFile_Callback(hObject, eventdata, handles)
 [filename, pathname] = uigetfile( ...
 {  '*.ppm;*.jpg;*.tif;*.png;*.gif','All Image Files';...
    '*.*','All Files' },'mytitle',...
-   'data\stare-images\im0001.ppm');
+   'data\STARE\stare-images\im0001.ppm');
+if filename == 0
+   return 
+end
 im = imread([pathname, '\', filename]);
 handles.im = im;
 guidata(hObject,handles);
