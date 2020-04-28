@@ -1,5 +1,19 @@
 # Retinal Vessel Segmentation
-  Matlab implementation of retinal blood vessel segmentation
+  Matlab and python implementation of retinal blood vessel segmentation
+
+
+
+### Environment
+
+```
+Unet.ipynb:
+·cv2
+·torch
+·albumentations
+·PIL
+·segmentation_models_pytorch
+·imageio
+```
 
 
 
@@ -14,3 +28,9 @@
 [4] Dachsel R., Jöster A., Breuß M. (2019) Real-Time Retinal Vessel Segmentation on High-Resolution Fundus Images Using Laplacian Pyramids. In: Lee C., Su Z., Sugimoto A. (eds) Image and Video Technology. PSIVT 2019. Lecture Notes in Computer Science, vol 11854. Springer, Cham
 
 [5] https://github.com/Teeerry/retinal-vessels-segment
+
+[6] https://github.com/qubvel/segmentation_models.pytorch
+
+[7] https://github.com/albumentations-team/albumentations
+
+[8] O. Ronneberger, P. Fischer, and T. Brox, “U-net: Convolutional networks for biomedical image segmentation,” in International Conference on Medical Image Computing and Computer-Assisted Intervention. Springer, 2015, pp. 234–241  
