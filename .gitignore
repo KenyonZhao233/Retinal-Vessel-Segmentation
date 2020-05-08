@@ -4,3 +4,5 @@
 *.tif
 *.gif
 .ipynb_checkpoints
+__pycache__
+.idea
