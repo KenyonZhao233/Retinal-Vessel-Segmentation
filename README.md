@@ -6,13 +6,13 @@
 ### Environment
 
 ```
-Unet.ipynb:
-·cv2
-·torch
-·albumentations
+·Pytorch
+·OpenCV
 ·PIL
-·segmentation_models_pytorch
 ·imageio
+·albumentations
+·segmentation_models_pytorch
+·PyQT
 ```
 
 
