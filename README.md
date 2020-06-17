@@ -48,3 +48,5 @@
 [7] https://github.com/albumentations-team/albumentations
 
 [8] O. Ronneberger, P. Fischer, and T. Brox, “U-net: Convolutional networks for biomedical image segmentation,” in International Conference on Medical Image Computing and Computer-Assisted Intervention. Springer, 2015, pp. 234–241  
+
+[9]  https://github.com/wkentaro/pytorch-fcn 
